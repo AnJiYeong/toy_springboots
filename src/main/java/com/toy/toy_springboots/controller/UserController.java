@@ -27,12 +27,12 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/listPagination/{currentPage}"}, method = RequestMethod.GET)
-    public ModelAndView listPagination(@RequestParam Map<String, Object> params
-            , @PathVariable String currentPage, ModelAndView modelAndView) {
-        params.put("currentPage", currentPage);
+    @RequestMapping(value = { "/listPagination/{currentPage}"}, method = RequestMethod.GET)
+    public ModelAndView listPagination(@RequestParam Map<String, Object> params, ModelAndView modelAndView
+            , @PathVariable String currentPage) {
+        params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = userService.getList(params);
+        Object resultMap = userService.getListWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("user/list_pagination");
         return modelAndView;

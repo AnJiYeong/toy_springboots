@@ -59,7 +59,7 @@
                     <span class="sr-only">Previous</span>
                 </a>
             </li>
-            <c:forEach var="i" begin="${}_pagination.blockStart" end="${_pagination.blockEnd}">
+            <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
             <li class="page-item"><a class="page-link" href="/user/listPagination/${i}">${i}</a></li>
             </c:forEach>
             <li class="page-item">
