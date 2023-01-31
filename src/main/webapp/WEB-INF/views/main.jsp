@@ -13,6 +13,7 @@
     <div>Main ! HTML</div>
     <div>User</div>
     <div> <a href="/user">/user/list.jsp</a> </div>
+    <div> <a href="/user/listPagination/1">/user/list_pagination.jsp</a> </div>
     
 </body>
 

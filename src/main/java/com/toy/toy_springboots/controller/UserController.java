@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,17 @@ public class UserController {
         Object resultMap = userService.getList(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("user/list");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/listPagination/{currentPage}"}, method = RequestMethod.GET)
+    public ModelAndView listPagination(@RequestParam Map<String, Object> params
+            , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", currentPage);
+        params.put("pageScale", 10);
+        Object resultMap = userService.getList(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.setViewName("user/list_pagination");
         return modelAndView;
     }
 }
