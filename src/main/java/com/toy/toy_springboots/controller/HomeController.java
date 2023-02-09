@@ -17,11 +17,17 @@ public class HomeController {
 
         if (principal instanceof UserDetails) {
         String username = ((UserDetails)principal).getUsername();
-        } else {
+        System.out.println(((UserDetails)principal).getUsername());
+        System.out.println(((UserDetails)principal).getPassword());
+        System.out.println(((UserDetails)principal).getAuthorities());
+        System.out.println(((UserDetails)principal).isAccountNonExpired());
+        System.out.println(((UserDetails)principal).isAccountNonLocked());
+        System.out.println(((UserDetails)principal).isCredentialsNonExpired());
+        System.out.println(((UserDetails)principal).isEnabled());
+    } else {
         String username = principal.toString();
         }
 
-        System.out.println(((UserDetails)principal).getUsername());
 
         String viewName = "/main";
         modelAndView.setViewName(viewName);
